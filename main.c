@@ -5,10 +5,6 @@ extern int yylex();
 extern int yyparse();
 extern FILE* yyin;
 
-extern int makesym();
-extern void* getsym(char* name, void* vret);
-extern void* putsym(char* name, void* data, int type);
-
 int lineno=1;
 
 int main(int argc, char** argv)
