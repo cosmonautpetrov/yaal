@@ -6,7 +6,8 @@
 	
 %}
 
-%token INT WORD SUB END ENTER EXIT CHAIN
+%token INT WORD SUB END ENTER EXIT CHAIN NUMBER SENTENCE ASSIGN ROUTINE NVAL NEXT
+%token OP_ADD OP_SUB OP_MUL OP_DIV
 
 %union {
 	int num;
@@ -17,15 +18,55 @@
 %token <word> WORD
 
 %%
-start:
-	func
-	;
+start: 
+  program
 
-stmt: INT stmt 	{printf("int %i\n", $1);}	
-	| WORD stmt	{printf("word %s\n", $1);}
-	| END  stmt 
-	|;
+program:
+	|program func
+	|program declare
 
 func:
-	SUB WORD ENTER stmt EXIT {printf("function %s\n", $2);}
+	SUB WORD {printf("function %s\n", $2);} ENTER varstmt CHAIN codestmt CHAIN retstmt EXIT 
+
+varstmt:
+	vartype WORD varassign
+	|NVAL
+
+varassign:
+	|ASSIGN varval
+
+codestmt: 
+	codestmt opstmt 
+	|NVAL
+	
+retstmt: WORD
+	|INT
+	|NVAL
+
+declare: varstmt
+	|varfunc
+	;
+
+vartype: NUMBER
+	|SENTENCE
+	;
+
+varfunc: ROUTINE vartype WORD
+	;
+
+varval: INT
+	|WORD
+	;
+
+binop: OP_ADD
+	| OP_SUB
+	| OP_MUL
+	| OP_DIV
+
+opstmt:
+	varval binop varval cntopstmt
+
+cntopstmt:
+	|cntopstmt binop varval
+	|cntopstmt ASSIGN varval 
 %%

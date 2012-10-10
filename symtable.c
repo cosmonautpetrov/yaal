@@ -16,8 +16,19 @@ struct symlnk
 };
 typedef struct symlnk symlnk;
 
+struct symlnktab
+{
+	symlnk** slt;
+	int num;
+	char** fnt;//function names
+};
+typedef struct symlnktab symlnktab;
+
 symlnk *symbol_table;
 symlnk *head;
+
+symlnktab *symbol_tables_local;
+symlnk *head_local;
 
 int makesym();
 //makes a symbol table, !NULL on success
@@ -25,6 +36,14 @@ void* getsym(char* name, void* vret);
 //returns NULL if not in symbol_table,else returns void* to data
 void* putsym(char* name, void* data, int type);
 //adds symbol to table,else updates data at symbol table
+int makesymlocal();
+//makes a table of local tables
+int addsymlocal(char* name);
+//adds a local symbol table
+void* getsymlocal(char* fname, char* vname, void* vret);
+//returns NULL if not in local table, else returns void* to data
+void* putsymlocal(char* fname, char* vname, void* data, int type);
+//adds symbol to local table
 
 int makesym()
 {
@@ -63,4 +82,27 @@ void* getsym(char* name, void* vret)
 			tmp++;
 	}
 	return 0;
+}
+
+int makesymlocal()
+{
+	symbol_tables_local->num = 0;
+	symbol_tables_local->slt = (void*)calloc(101, sizeof(void*));
+	head_local = symbol_tables_local->slt[0];
+	if(symbol_tables_local->slt)
+		return 1;
+	else
+		return 0;
+}
+
+int addsymlocal(char* name)
+{
+}
+
+void* getsymlocal(char* fname, char* vname, void* vret)
+{
+}
+
+void* putsymlocal(char* fname, char* vname, void* data, int type)
+{
 }

@@ -9,6 +9,8 @@ extern int makesym();
 extern void* getsym(char* name, void* vret);
 extern void* putsym(char* name, void* data, int type);
 
+int lineno=1;
+
 int main(int argc, char** argv)
 {
 	if(argc == 1){
@@ -23,5 +25,6 @@ int main(int argc, char** argv)
 
 void yyerror(char* s)
 {
+	printf("syntax error at %i\n", lineno);
 	exit(-1);
 }
