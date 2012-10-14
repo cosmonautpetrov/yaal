@@ -1,52 +1,58 @@
 #include "block.h"
-#define ADD '+'
-#define SUB '-'
-#define MUL '*'
-#define DIV '/'
-#define ASI '='
 
-#define LABEL -1
-#define NUM -2
+codeblock* current_block;
+codearg*   current_head;
+int numargs = 0;
 
-codeline* intermcode;
-codeline* code_head;
-int num = 1;
-
-int addline(codeline*);
-int makline();
-int printline(codeline*);
-
-int makline()
+int makeblock(char* routine)
 {
-	intermcode = (void*)malloc(sizeof(codeline)*2);
-	code_head = intermcode;
+	current_block = malloc(sizeof(codeblock));
+	current_block->codelist = malloc(sizeof(codearg)*2);
+	current_head = current_block->codelist;
+}
+
+int addline(int typearg, void* argitself)
+{
+	current_block->codelist = realloc(current_block->codelist, sizeof(codearg)*numargs + sizeof(codearg)*2);
+	current_head = &current_block->codelist[numargs];
+	current_head->typearg = typearg;
+	if(typearg == TYPE_STR)
+		current_head->name = argitself;
+	if(typearg == TYPE_INT)
+		current_head->val = (int)argitself;
+	if(typearg != TYPE_INT &&  typearg != TYPE_STR)
+		current_head->val = (int)argitself;
+	numargs++;
+	current_head++;
 	return 0;
 }
 
-int addline(codeline* input)
+int closeblock()
 {
-	memcpy(code_head, input, sizeof(codeline));
-	intermcode = (void*)realloc(intermcode, (sizeof(codeline)*(num+1)));
-	num++;
-	code_head++;
-	return 0;	
+	int i;
+	codearg* temp = current_block->codelist;
+	for(i = 0; i < numargs; i++)
+	{
+		if(&temp[i])
+			free(&temp[i]);
+	}
+	free(current_block);
+	return 0;
 }
 
-int printline(codeline* input)
+int printblock()
 {
-	if(input->typearg1 == LABEL)
-		printf("%s", input->arg1.name);
-	if(input->typearg1 == NUM)
-		printf("%i", input->arg1.val);
-	printf("%c", input->op1);
-	if(input->typearg2 == LABEL)
-		printf("%s", input->arg1.name);
-	if(input->typearg2 == NUM)
-		printf("%i", input->arg1.val);
-	printf("%c", input->op2);
-	if(input->typearg3 == LABEL)
-		printf("%s", input->arg1.name);
-	if(input->typearg3 == NUM)
-		printf("%i", input->arg1.val);
-	return 0;
+	int i = 0;
+	codearg *temp = current_block->codelist;
+	while(i++ < numargs)
+	{
+		if(temp->typearg == TYPE_INT)
+			printf("%i ", temp->val);
+		if(temp->typearg == TYPE_STR)
+			printf("%s ", temp->name);
+		if(temp->typearg != TYPE_INT && temp->typearg != TYPE_STR)
+			printf("%c ", temp->val);
+		temp++;
+	}
+	printf("\n");
 }

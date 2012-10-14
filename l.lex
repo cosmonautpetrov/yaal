@@ -8,6 +8,9 @@ extern int lineno;
 %%
 [ \t] /* white space, do nothing*/;
 [\n]							{ lineno++;}
+seta							{ return SETAT;}
+geta							{ return GETAT;}
+array							{ return ARRAY;}
 null							{ return NVAL;}
 number							{ return NUMBER;}
 sentence						{ return SENTENCE;}
@@ -20,6 +23,8 @@ routine							{ return ROUTINE;}
 [@]								{ return SUB;}
 [(]								{ return ENTER;}
 [)]								{ return EXIT;}
+[\[]							{ return OPENP;}
+[\]]							{ return CLOSEP;}
 [=]								{ return ASSIGN;}
 [+]								{ return OP_ADD;}
 [-]								{ return OP_SUB;}
