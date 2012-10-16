@@ -26,16 +26,17 @@
 
 %%
 program:
-	|program codestmt
-	|program declare
-	|program ENTER {makesym();makeblock(NULL);printf("ENTER\n");}
-	|program EXIT {printblock();printsym();printf("EXIT\n");}
+	|ENTER {makesym();makeblock(NULL);printf("ENTER\n");} possiblestmt EXIT {printblock();printsym();printf("EXIT\n");}
+
+possiblestmt:
+	|possiblestmt codestmt
+	|possiblestmt declare
 
 varstmt:
 	vartype WORD {printf("%s\n", $2);if(!getsym($2))putsym($2, 0, TYPE_INT);else printf("symbol %s already registered\n", $2);}
 
 codestmt: 
-	|OPENP {printf("OPENP\n");} opstmt CLOSEP {printf("CLOSEP\n");}
+	OPENP {printf("OPENP\n");} opstmt CLOSEP {printf("CLOSEP\n");}
 
 declare: varstmt
 	|varfunc
@@ -46,16 +47,16 @@ vartype: NUMBER {printf("NUMBER\n");type_selector=TYPE_INT;}
 varfunc: ROUTINE vartype WORD
 
 varval: INT 	{printf("INT %i\n", $1); addline(TYPE_INT, (void*)$1);}
-	|WORD 		{printf("WORD %s\n", $1); addline(TYPE_STR, (void*)$1);}
+	|WORD 		{printf("WORD %s\n", $1); if(getsym($1))addline(TYPE_STR, (void*)$1);else printf("%s undefined\n", $1);}
 
-binop: OP_ADD	{printf("OP_ADD\n"); addline(TYPE_OP_ADD, (void*)'+');}
-	| OP_SUB	{printf("OP_SUB\n"); addline(TYPE_OP_SUB, (void*)'-');}
-	| OP_MUL	{printf("OP_MUL\n"); addline(TYPE_OP_MUL, (void*)'*');}
-	| OP_DIV	{printf("OP_DIV\n"); addline(TYPE_OP_DIV, (void*)'/');}
+binop: OP_ADD	{printf("OP_ADD\n"); addline(TYPE_OP, (void*)'+');}
+	| OP_SUB	{printf("OP_SUB\n"); addline(TYPE_OP, (void*)'-');}
+	| OP_MUL	{printf("OP_MUL\n"); addline(TYPE_OP, (void*)'*');}
+	| OP_DIV	{printf("OP_DIV\n"); addline(TYPE_OP, (void*)'/');}
 
-datop: SETAT 	{printf("SETAT\n"); addline(TYPE_OP_SET, (void*)'=');}
-	| GETAT 	{printf("GETAT\n"); addline(TYPE_OP_GET, (void*)'$');}
-	| ARRAY		{printf("ARRAY\n"); addline(TYPE_OP_ARR, (void*)'#');}
+datop: SETAT 	{printf("SETAT\n"); addline(TYPE_OP, (void*)'=');}
+	| GETAT 	{printf("GETAT\n"); addline(TYPE_OP, (void*)'$');}
+	| ARRAY		{printf("ARRAY\n"); addline(TYPE_OP, (void*)'#');}
 
 possiblearg: binop
 	| varval
@@ -63,5 +64,5 @@ possiblearg: binop
 
 opstmt: 
 	|opstmt possiblearg
-	|opstmt OPENP {printf("OPENP\n");} opstmt CLOSEP {printf("CLOSEP\n");}
+	|opstmt OPENP {printf("OPENP\n");chlevel(TYPE_EMB);} opstmt CLOSEP {printf("CLOSEP\n");chlevel(TYPE_LV);}
 %%
