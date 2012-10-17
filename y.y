@@ -10,7 +10,7 @@
 	void* sym_return;
 %}
 
-%token INT WORD NUMBER SENTENCE NVAL
+%token INT WORD NUMBER SENTENCE NVAL LOCALVAR
 %token SUB END CHAIN ROUTINE NEXT
 %token OP_ADD OP_SUB OP_MUL OP_DIV
 %token OPENP CLOSEP ENTER EXIT
@@ -21,6 +21,7 @@
 	char* word;
 }
 
+%token <num> LOCALVAR
 %token <num> INT
 %token <word> WORD
 
@@ -33,10 +34,10 @@ possiblestmt:
 	|possiblestmt declare
 
 varstmt:
-	vartype WORD {printf("%s\n", $2);if(!getsym($2))putsym($2, 0, TYPE_INT);else printf("symbol %s already registered\n", $2);}
+	vartype WORD {printf("%s\n", $2);if(!getsym($2))putsym($2, 0, type_selector);else printf("symbol %s already registered\n", $2);}
 
 codestmt: 
-	OPENP {printf("OPENP\n");} opstmt CLOSEP {printf("CLOSEP\n");}
+	OPENP {printf("OPENP\n");addline(TYPE_OP, (void*)'[');} opstmt CLOSEP {printf("CLOSEP\n");addline(TYPE_OP, (void*)']');}
 
 declare: varstmt
 	|varfunc
@@ -48,6 +49,7 @@ varfunc: ROUTINE vartype WORD
 
 varval: INT 	{printf("INT %i\n", $1); addline(TYPE_INT, (void*)$1);}
 	|WORD 		{printf("WORD %s\n", $1); if(getsym($1))addline(TYPE_STR, (void*)$1);else printf("%s undefined\n", $1);}
+	|LOCALVAR   {printf("LOCAL %c\n", (char)$1); addline(TYPE_LOC, (void*)$1);}
 
 binop: OP_ADD	{printf("OP_ADD\n"); addline(TYPE_OP, (void*)'+');}
 	| OP_SUB	{printf("OP_SUB\n"); addline(TYPE_OP, (void*)'-');}
@@ -64,5 +66,5 @@ possiblearg: binop
 
 opstmt: 
 	|opstmt possiblearg
-	|opstmt OPENP {printf("OPENP\n");chlevel(TYPE_EMB);} opstmt CLOSEP {printf("CLOSEP\n");chlevel(TYPE_LV);}
+	|opstmt OPENP {printf("OPENP\n");chlevel(TYPE_EMB);addline(TYPE_OP, (void*)'[');} opstmt CLOSEP {printf("CLOSEP\n");chlevel(TYPE_LV);addline(TYPE_OP, (void*)']');}
 %%

@@ -15,6 +15,7 @@ null							{ return NVAL;}
 number							{ return NUMBER;}
 sentence						{ return SENTENCE;}
 routine							{ return ROUTINE;}
+[a-z]							{ yylval.num=(int)*yytext;return LOCALVAR;}
 [a-z][a-zA-Z0-9]+				{ yylval.word=strdup(yytext);return WORD;}
 [0-9]+							{ yylval.num=atoi(yytext);return INT;}
 [:]								{ return CHAIN;}

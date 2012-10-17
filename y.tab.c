@@ -72,80 +72,83 @@ extern int YYPARSE_DECL();
 #define NUMBER 259
 #define SENTENCE 260
 #define NVAL 261
-#define SUB 262
-#define END 263
-#define CHAIN 264
-#define ROUTINE 265
-#define NEXT 266
-#define OP_ADD 267
-#define OP_SUB 268
-#define OP_MUL 269
-#define OP_DIV 270
-#define OPENP 271
-#define CLOSEP 272
-#define ENTER 273
-#define EXIT 274
-#define SETAT 275
-#define GETAT 276
-#define ARRAY 277
-#define ASSIGN 278
+#define LOCALVAR 262
+#define SUB 263
+#define END 264
+#define CHAIN 265
+#define ROUTINE 266
+#define NEXT 267
+#define OP_ADD 268
+#define OP_SUB 269
+#define OP_MUL 270
+#define OP_DIV 271
+#define OPENP 272
+#define CLOSEP 273
+#define ENTER 274
+#define EXIT 275
+#define SETAT 276
+#define GETAT 277
+#define ARRAY 278
+#define ASSIGN 279
 #define YYERRCODE 256
 static const short yylhs[] = {                           -1,
     0,    2,    0,    1,    1,    1,    5,    8,    3,    4,
-    4,    6,    6,    9,   10,   10,   11,   11,   11,   11,
-   12,   12,   12,   13,   13,   13,    7,    7,   14,    7,
+    4,    6,    6,    9,   10,   10,   10,   11,   11,   11,
+   11,   12,   12,   12,   13,   13,   13,    7,    7,   14,
+    7,
 };
 static const short yylen[] = {                            2,
     0,    0,    4,    0,    2,    2,    2,    0,    4,    1,
     1,    1,    1,    3,    1,    1,    1,    1,    1,    1,
-    1,    1,    1,    1,    1,    1,    0,    2,    0,    5,
+    1,    1,    1,    1,    1,    1,    1,    0,    2,    0,
+    5,
 };
 static const short yydefred[] = {                         0,
     2,    0,    4,    0,   12,   13,    0,    8,    3,    5,
-    6,   10,    0,   11,    0,   27,    7,   14,    0,   15,
-   16,   17,   18,   19,   20,   29,    9,   21,   22,   23,
-   25,   24,   26,   28,   27,    0,   30,
+    6,   10,    0,   11,    0,   28,    7,   14,    0,   15,
+   16,   17,   18,   19,   20,   21,   30,    9,   22,   23,
+   24,   26,   25,   27,   29,   28,    0,   31,
 };
 static const short yydgoto[] = {                          2,
-    4,    3,   10,   11,   12,   13,   19,   16,   14,   31,
-   32,   33,   34,   35,
+    4,    3,   10,   11,   12,   13,   19,   16,   14,   32,
+   33,   34,   35,   36,
 };
-static const short yysindex[] = {                      -271,
-    0,    0,    0, -227,    0,    0, -256,    0,    0,    0,
-    0,    0, -253,    0, -252,    0,    0,    0, -257,    0,
+static const short yysindex[] = {                      -272,
+    0,    0,    0, -225,    0,    0, -256,    0,    0,    0,
+    0,    0, -252,    0, -251,    0,    0,    0, -257,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0, -241,    0,
+    0,    0,    0,    0,    0,    0, -240,    0,
 };
-static const short yyrindex[] = {                         7,
+static const short yyrindex[] = {                         8,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,
+    0,    0,    0,    0,    0,    0,    0,    0,
 };
 static const short yygindex[] = {                         0,
-    0,    0,    0,    0,    0,    1,  -26,    0,    0,    0,
+    0,    0,    0,    0,    0,    2,  -26,    0,    0,    0,
     0,    0,    0,    0,
 };
-#define YYTABLESIZE 47
+#define YYTABLESIZE 50
 static const short yytable[] = {                         20,
-   21,    1,    5,    6,   17,   18,    1,   15,   36,   22,
-   23,   24,   25,   26,   27,   20,   21,   28,   29,   30,
-    0,    0,    0,    0,    0,   22,   23,   24,   25,   26,
-   37,    5,    6,   28,   29,   30,    0,    7,    0,    0,
-    0,    0,    0,    8,    0,    0,    9,
+   21,    1,    5,    6,   22,   17,   18,    1,   15,   37,
+   23,   24,   25,   26,   27,   28,   20,   21,   29,   30,
+   31,   22,    0,    0,    0,    0,    0,   23,   24,   25,
+   26,   27,   38,    5,    6,   29,   30,   31,    0,    0,
+    7,    0,    0,    0,    0,    0,    8,    0,    0,    9,
 };
 static const short yycheck[] = {                        257,
-  258,  273,  259,  260,  258,  258,    0,    7,   35,  267,
-  268,  269,  270,  271,  272,  257,  258,  275,  276,  277,
-   -1,   -1,   -1,   -1,   -1,  267,  268,  269,  270,  271,
-  272,  259,  260,  275,  276,  277,   -1,  265,   -1,   -1,
-   -1,   -1,   -1,  271,   -1,   -1,  274,
+  258,  274,  259,  260,  262,  258,  258,    0,    7,   36,
+  268,  269,  270,  271,  272,  273,  257,  258,  276,  277,
+  278,  262,   -1,   -1,   -1,   -1,   -1,  268,  269,  270,
+  271,  272,  273,  259,  260,  276,  277,  278,   -1,   -1,
+  266,   -1,   -1,   -1,   -1,   -1,  272,   -1,   -1,  275,
 };
 #define YYFINAL 2
 #ifndef YYDEBUG
 #define YYDEBUG 0
 #endif
-#define YYMAXTOKEN 278
+#define YYMAXTOKEN 279
 #if YYDEBUG
 static const char *yyname[] = {
 
@@ -156,8 +159,9 @@ static const char *yyname[] = {
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"INT","WORD","NUMBER","SENTENCE",
-"NVAL","SUB","END","CHAIN","ROUTINE","NEXT","OP_ADD","OP_SUB","OP_MUL","OP_DIV",
-"OPENP","CLOSEP","ENTER","EXIT","SETAT","GETAT","ARRAY","ASSIGN",
+"NVAL","LOCALVAR","SUB","END","CHAIN","ROUTINE","NEXT","OP_ADD","OP_SUB",
+"OP_MUL","OP_DIV","OPENP","CLOSEP","ENTER","EXIT","SETAT","GETAT","ARRAY",
+"ASSIGN",
 };
 static const char *yyrule[] = {
 "$accept : program",
@@ -177,6 +181,7 @@ static const char *yyrule[] = {
 "varfunc : ROUTINE vartype WORD",
 "varval : INT",
 "varval : WORD",
+"varval : LOCALVAR",
 "binop : OP_ADD",
 "binop : OP_SUB",
 "binop : OP_MUL",
@@ -434,78 +439,82 @@ yyreduce:
     switch (yyn)
     {
 case 2:
-#line 29 "y.y"
+#line 30 "y.y"
 	{makesym();makeblock(NULL);printf("ENTER\n");}
 break;
 case 3:
-#line 29 "y.y"
+#line 30 "y.y"
 	{printblock();printsym();printf("EXIT\n");}
 break;
 case 7:
-#line 36 "y.y"
-	{printf("%s\n", yystack.l_mark[0].word);if(!getsym(yystack.l_mark[0].word))putsym(yystack.l_mark[0].word, 0, TYPE_INT);else printf("symbol %s already registered\n", yystack.l_mark[0].word);}
+#line 37 "y.y"
+	{printf("%s\n", yystack.l_mark[0].word);if(!getsym(yystack.l_mark[0].word))putsym(yystack.l_mark[0].word, 0, type_selector);else printf("symbol %s already registered\n", yystack.l_mark[0].word);}
 break;
 case 8:
-#line 39 "y.y"
-	{printf("OPENP\n");}
+#line 40 "y.y"
+	{printf("OPENP\n");addline(TYPE_OP, (void*)'[');}
 break;
 case 9:
-#line 39 "y.y"
-	{printf("CLOSEP\n");}
+#line 40 "y.y"
+	{printf("CLOSEP\n");addline(TYPE_OP, (void*)']');}
 break;
 case 12:
-#line 44 "y.y"
+#line 45 "y.y"
 	{printf("NUMBER\n");type_selector=TYPE_INT;}
 break;
 case 13:
-#line 45 "y.y"
+#line 46 "y.y"
 	{printf("SENTENCE\n");type_selector=TYPE_STR;}
 break;
 case 15:
-#line 49 "y.y"
+#line 50 "y.y"
 	{printf("INT %i\n", yystack.l_mark[0].num); addline(TYPE_INT, (void*)yystack.l_mark[0].num);}
 break;
 case 16:
-#line 50 "y.y"
+#line 51 "y.y"
 	{printf("WORD %s\n", yystack.l_mark[0].word); if(getsym(yystack.l_mark[0].word))addline(TYPE_STR, (void*)yystack.l_mark[0].word);else printf("%s undefined\n", yystack.l_mark[0].word);}
 break;
 case 17:
 #line 52 "y.y"
-	{printf("OP_ADD\n"); addline(TYPE_OP, (void*)'+');}
+	{printf("LOCAL %c\n", (char)yystack.l_mark[0].num); addline(TYPE_LOC, (void*)yystack.l_mark[0].num);}
 break;
 case 18:
-#line 53 "y.y"
-	{printf("OP_SUB\n"); addline(TYPE_OP, (void*)'-');}
+#line 54 "y.y"
+	{printf("OP_ADD\n"); addline(TYPE_OP, (void*)'+');}
 break;
 case 19:
-#line 54 "y.y"
-	{printf("OP_MUL\n"); addline(TYPE_OP, (void*)'*');}
+#line 55 "y.y"
+	{printf("OP_SUB\n"); addline(TYPE_OP, (void*)'-');}
 break;
 case 20:
-#line 55 "y.y"
-	{printf("OP_DIV\n"); addline(TYPE_OP, (void*)'/');}
+#line 56 "y.y"
+	{printf("OP_MUL\n"); addline(TYPE_OP, (void*)'*');}
 break;
 case 21:
 #line 57 "y.y"
-	{printf("SETAT\n"); addline(TYPE_OP, (void*)'=');}
+	{printf("OP_DIV\n"); addline(TYPE_OP, (void*)'/');}
 break;
 case 22:
-#line 58 "y.y"
-	{printf("GETAT\n"); addline(TYPE_OP, (void*)'$');}
+#line 59 "y.y"
+	{printf("SETAT\n"); addline(TYPE_OP, (void*)'=');}
 break;
 case 23:
-#line 59 "y.y"
+#line 60 "y.y"
+	{printf("GETAT\n"); addline(TYPE_OP, (void*)'$');}
+break;
+case 24:
+#line 61 "y.y"
 	{printf("ARRAY\n"); addline(TYPE_OP, (void*)'#');}
 break;
-case 29:
-#line 67 "y.y"
-	{printf("OPENP\n");chlevel(TYPE_EMB);}
-break;
 case 30:
-#line 67 "y.y"
-	{printf("CLOSEP\n");chlevel(TYPE_LV);}
+#line 69 "y.y"
+	{printf("OPENP\n");chlevel(TYPE_EMB);addline(TYPE_OP, (void*)'[');}
 break;
-#line 508 "y.tab.c"
+case 31:
+#line 69 "y.y"
+	{printf("CLOSEP\n");chlevel(TYPE_LV);addline(TYPE_OP, (void*)']');}
+break;
+#line 517 "y.tab.c"
     }
     yystack.s_mark -= yym;
     yystate = *yystack.s_mark;

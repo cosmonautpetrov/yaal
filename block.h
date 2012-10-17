@@ -6,17 +6,19 @@
 
 #define TYPE_INT -1 //integer
 #define TYPE_STR -2 //string
-#define TYPE_EMB -3 //embedded block- used for parentheses
+#define TYPE_EMB '[' //embedded block- used for parentheses
 #define TYPE_OP  -4 //operator
-#define TYPE_LV  -12 //leave embedded block
+#define TYPE_LV  ']' //leave embedded block
 
-#define TYPE_OP_ADD -5
-#define TYPE_OP_SUB -6
-#define TYPE_OP_MUL -7
-#define TYPE_OP_DIV -8
-#define TYPE_OP_SET -9 //=
-#define TYPE_OP_GET -10 //$
-#define TYPE_OP_ARR -11 //#
+#define TYPE_OP_ADD '+'
+#define TYPE_OP_SUB '-'
+#define TYPE_OP_MUL '*'
+#define TYPE_OP_DIV '/'
+#define TYPE_OP_SET '=' //=
+#define TYPE_OP_GET '$' //$
+#define TYPE_OP_ARR '#' //#
+
+#define TYPE_LOC -13//local
 
 struct codearg
 {
@@ -24,7 +26,6 @@ struct codearg
 	int embedlevel; //current embed level
 	char* name; //variable (look up in symtable)
 	int val; //int value if its a constant, operator value for opp
-	struct codearg* p_codearg; //pointer to a pointer below
 };
 typedef struct codearg codearg;
 
@@ -40,5 +41,6 @@ int addline(int typearg, void* argitself); //adds to current block
 int chlevel(int level); //changes embed level
 int closeblock(); //saves current block
 int printblock();
+codearg* returnblock();
 
 #endif

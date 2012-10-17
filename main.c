@@ -4,12 +4,13 @@
 extern int yylex();
 extern int yyparse();
 extern FILE* yyin;
+extern codegen(char* filename);
 
 int lineno=1;
 
 int main(int argc, char** argv)
 {
-	if(argc == 1){
+	if(argc < 3){
 		printf("not enough args\n");
 		return 0;
 	}
@@ -17,6 +18,8 @@ int main(int argc, char** argv)
   	yyin = fptr;
   	while(!(feof(yyin)))
   		yyparse();
+
+  	codegen(argv[2]);
 }
 
 void yyerror(char* s)

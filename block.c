@@ -5,6 +5,11 @@ codearg*   current_head;
 int numargs = 0;
 int embedlevel = 0;
 
+codearg* returnblock()
+{
+	return current_block->codelist;
+}
+
 int makeblock(char* routine)
 {
 	current_block = malloc(sizeof(codeblock));
@@ -22,8 +27,12 @@ int addline(int typearg, void* argitself)
 		current_head->name = argitself;
 	if(typearg == TYPE_INT)
 		current_head->val = (int)argitself;
-	if(typearg == TYPE_OP)
+	if(typearg == TYPE_OP){
 		current_head->val = (int)argitself;
+		}
+	if(typearg == TYPE_LOC){
+		current_head->val = (int)argitself;
+	}
 	numargs++;
 	current_head++;
 	return 0;
@@ -64,6 +73,8 @@ int printblock()
 		if(temp->typearg == TYPE_STR)
 			printf("%s ", temp->name);
 		if(temp->typearg == TYPE_OP)
+			printf("%c ", temp->val);
+		if(temp->typearg == TYPE_LOC)
 			printf("%c ", temp->val);
 		temp++;
 

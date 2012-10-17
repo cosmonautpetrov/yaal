@@ -1,29 +1,4 @@
-#include "stdlib.h"
-#include "string.h"
-#include "stdio.h"
-
-#define HEAD -1
-
-struct symlnk
-{
-	struct symlnk *next;
-	char* name;
-	int type;
-	union
-	{
-		int ival;
-		char* sval;
-	}dat;
-};
-typedef struct symlnk symlnk;
-
-struct symlnktab
-{
-	symlnk** slt;
-	int num;
-	char** fnt;//function names
-};
-typedef struct symlnktab symlnktab;
+#include "symtable.h"
 
 symlnk *symbol_table;
 symlnk *head;
@@ -31,22 +6,6 @@ int sym_num = 0;
 
 symlnktab *symbol_tables_local;
 symlnk *head_local;
-
-int makesym();
-//makes a symbol table, !NULL on success
-void* getsym(char* name, void* vret);
-//returns NULL if not in symbol_table,else returns void* to data
-void* putsym(char* name, void* data, int type);
-//adds symbol to table,else updates data at symbol table
-int makesymlocal();
-//makes a table of local tables
-int addsymlocal(char* name);
-//adds a local symbol table
-void* getsymlocal(char* fname, char* vname, void* vret);
-//returns NULL if not in local table, else returns void* to data
-void* putsymlocal(char* fname, char* vname, void* data, int type);
-//adds symbol to local table
-void* printsym();
 
 int makesym()
 {
@@ -84,8 +43,11 @@ void* getsym(char* name, void* vret)
 			if(tmp->type == -1){
 				if(vret)
 					vret = (void*)tmp->dat.ival;
-				return (void*)1;
-			}
+				return (void*)tmp;}
+			if(tmp->type == -2){
+				if(vret)
+					vret = (void*)tmp->dat.sval;
+				return (void*)tmp;}
 		}
 		else
 			tmp++;
@@ -125,4 +87,9 @@ void* getsymlocal(char* fname, char* vname, void* vret)
 
 void* putsymlocal(char* fname, char* vname, void* data, int type)
 {
+}
+
+symlnk* returnsym()
+{
+	return symbol_table;
 }
