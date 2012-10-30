@@ -1,2 +1,0 @@
-(routine main
-	(["hello world" print]))
