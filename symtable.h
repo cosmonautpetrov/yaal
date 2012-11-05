@@ -13,11 +13,19 @@ struct symlnk
 	union
 	{
 		int ival;
-		char* sval;
+		void* sval;
 	}dat;
 };
 typedef struct symlnk symlnk;
 #define HEAD -1
+
+struct arrstruct
+{
+	void* buffer;
+	int type;
+	int max;
+};
+typedef struct arrstruct arrstruct;
 
 int makesym(char*);
 //makes a symbol table, !NULL on success
@@ -30,5 +38,9 @@ symlnk* returnsym();
 //returns main symtable
 void* printsym();
 
+//arrstruct functions
+arrstruct* makearr(int type);
+int writearr(arrstruct*, int val, int n);
+int getarr(arrstruct*, int n);
 
 #endif

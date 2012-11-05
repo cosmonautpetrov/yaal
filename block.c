@@ -13,13 +13,13 @@ codearg* returnblock()
 int makeblock(char* routine)
 {
 	current_block = malloc(sizeof(codeblock));
-	current_block->codelist = malloc(sizeof(codearg)*2);
+	current_block->codelist = malloc(sizeof(codearg));
 	current_head = current_block->codelist;
 }
 
 int addline(int typearg, void* argitself)
 {
-	current_block->codelist = realloc(current_block->codelist, sizeof(codearg)*numargs + sizeof(codearg)*2);
+	current_block->codelist = realloc(current_block->codelist, sizeof(codearg)*(numargs+1));
 	current_head = &current_block->codelist[numargs];
 	current_head->typearg = typearg;
 	current_head->embedlevel = embedlevel;
@@ -37,7 +37,6 @@ int addline(int typearg, void* argitself)
 		current_head->name = argitself;
 	}
 	numargs++;
-	current_head++;
 	return 0;
 }
 

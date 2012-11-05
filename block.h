@@ -7,6 +7,10 @@
 #define TYPE_INT -1 //integer
 #define TYPE_STR -2 //string
 #define TYPE_EMB '[' //embedded block- used for parentheses
+#define TYPE_ARRC 'c' //array of chars
+#define TYPE_ARRI 'i' //array of integers
+#define TYPE_OP_SETN 's' //set at array
+#define TYPE_OP_GETN 'g' //get at array
 #define TYPE_OP  -4 //operator
 #define TYPE_LV  ']' //leave embedded block
 #define TYPE_ROUT '('
@@ -20,6 +24,11 @@
 #define TYPE_OP_GET '$' //$
 #define TYPE_OP_ARR '#' //#
 #define TYPE_OP_PNT '^' //print string
+#define TYPE_OP_IF  '?'
+#define TYPE_OP_EQUAL 'e'
+#define TYPE_OP_LOOP  'l'
+#define TYPE_OP_LESS  'L'
+#define TYPE_OP_GREATER 'G'
 
 #define TYPE_LOC -13//local
 

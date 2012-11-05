@@ -30,7 +30,7 @@ static const char yysccsid[] = "@(#)yaccpar	1.9 (Berkeley) 02/21/93";
 
 	int type_selector;
 	void* sym_return;
-#line 23 "y.y"
+#line 24 "y.y"
 #ifdef YYSTYPE
 #undef  YYSTYPE_IS_DECLARED
 #define YYSTYPE_IS_DECLARED 1
@@ -93,75 +93,94 @@ extern int YYPARSE_DECL();
 #define EXIT 276
 #define SETAT 277
 #define GETAT 278
-#define ARRAY 279
-#define ASSIGN 280
-#define PRINT 281
+#define SETATN 279
+#define GETATN 280
+#define ARRAYS 281
+#define ARRAYN 282
+#define ASSIGN 283
+#define PRINT 284
+#define OP_IF 285
+#define OP_EQUAL 286
+#define OP_LOOP 287
+#define OP_LESS 288
+#define OP_GREATER 289
 #define YYERRCODE 256
 static const short yylhs[] = {                           -1,
     0,    2,    0,    4,    3,    1,    1,    1,    7,   10,
-    5,    6,    6,    8,    8,   11,   11,   11,   11,   12,
-   12,   12,   12,   13,   13,   13,   13,   14,   14,   14,
-    9,    9,   15,    9,
+    5,    6,    6,    8,    8,    8,    8,   11,   11,   11,
+   11,   12,   12,   12,   12,   13,   13,   13,   13,   13,
+   14,   14,   14,   14,   14,   15,   15,   15,   15,    9,
+    9,   16,    9,
 };
 static const short yylen[] = {                            2,
     0,    0,    4,    0,    6,    0,    2,    2,    2,    0,
     4,    1,    1,    1,    1,    1,    1,    1,    1,    1,
     1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-    0,    2,    0,    5,
+    1,    1,    1,    1,    1,    1,    1,    1,    1,    0,
+    2,    0,    5,
 };
 static const short yydefred[] = {                         0,
-    2,    0,    6,    0,   14,   15,    0,   10,    3,   13,
-    7,    8,   12,    0,    4,   31,    9,    0,    0,    6,
-   16,   17,   18,   19,   20,   21,   22,   23,   33,   11,
-   24,   25,   26,   27,   29,   28,   30,   32,    0,   31,
-    5,    0,   34,
+    2,    0,    6,    0,   14,   15,    0,   10,    3,   16,
+   17,   13,    7,    8,   12,    0,    4,   40,    9,    0,
+    0,    6,   18,   19,   20,   21,   22,   23,   24,   25,
+   42,   11,   26,   27,   28,   29,   30,   31,   32,   33,
+   34,   35,   37,   36,   38,   39,   41,    0,   40,    5,
+    0,   43,
 };
 static const short yydgoto[] = {                          2,
-    4,    3,   10,   18,   11,   12,   13,   14,   19,   16,
-   35,   36,   37,   38,   40,
+    4,    3,   12,   20,   13,   14,   15,   16,   21,   18,
+   43,   44,   45,   46,   47,   49,
 };
 static const short yysindex[] = {                      -273,
-    0,    0,    0, -216,    0,    0, -255,    0,    0,    0,
-    0,    0,    0, -254,    0,    0,    0, -268, -257,    0,
+    0,    0,    0, -201,    0,    0, -255,    0,    0,    0,
+    0,    0,    0,    0,    0, -254,    0,    0,    0, -268,
+ -257,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,    0,    0,    0,    0,    0, -206,    0,
-    0, -232,    0,
+    0,    0,    0,    0,    0,    0,    0, -191,    0,    0,
+ -224,    0,
 };
 static const short yyrindex[] = {                         8,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
     0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-    0,    0,    0,
+    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+    0,    0,
 };
 static const short yygindex[] = {                         0,
-  -11,    0,    0,    0,    0,    0,    0,    0,  -30,    0,
-    0,    0,    0,    0,    0,
+  -13,    0,    0,    0,    0,    0,    0,    0,  -39,    0,
+    0,    0,    0,    0,    0,    0,
 };
-#define YYTABLESIZE 70
-static const short yytable[] = {                         21,
-   22,    1,   15,   17,   23,   24,   20,    1,   39,   42,
-    0,   25,   26,   27,   28,   29,   30,    0,    0,   31,
-   32,   33,    0,   34,   21,   22,    0,    0,    0,   23,
-   24,    0,    0,    0,    0,    0,   25,   26,   27,   28,
-   29,   43,    5,    6,   31,   32,   33,    0,   34,    0,
-    7,    0,    5,    6,    0,    0,    8,    0,    0,    9,
-    7,    0,    0,    0,    0,    0,    8,    0,    0,   41,
+#define YYTABLESIZE 91
+static const short yytable[] = {                         23,
+   24,    1,   17,   19,   25,   26,   22,    1,   48,   51,
+    0,   27,   28,   29,   30,   31,   32,    0,    0,   33,
+   34,   35,   36,    0,    0,    0,   37,   38,   39,   40,
+   41,   42,   23,   24,    0,    0,    0,   25,   26,    0,
+    0,    0,    0,    0,   27,   28,   29,   30,   31,   52,
+    0,    0,   33,   34,   35,   36,    0,    5,    6,   37,
+   38,   39,   40,   41,   42,    7,    0,    5,    6,    0,
+    0,    8,    0,    0,    9,    7,    0,    0,    0,   10,
+   11,    8,    0,    0,   50,    0,    0,    0,    0,   10,
+   11,
 };
 static const short yycheck[] = {                        257,
-  258,  275,  258,  258,  262,  263,  275,    0,   20,   40,
+  258,  275,  258,  258,  262,  263,  275,    0,   22,   49,
    -1,  269,  270,  271,  272,  273,  274,   -1,   -1,  277,
-  278,  279,   -1,  281,  257,  258,   -1,   -1,   -1,  262,
-  263,   -1,   -1,   -1,   -1,   -1,  269,  270,  271,  272,
-  273,  274,  259,  260,  277,  278,  279,   -1,  281,   -1,
-  267,   -1,  259,  260,   -1,   -1,  273,   -1,   -1,  276,
-  267,   -1,   -1,   -1,   -1,   -1,  273,   -1,   -1,  276,
+  278,  279,  280,   -1,   -1,   -1,  284,  285,  286,  287,
+  288,  289,  257,  258,   -1,   -1,   -1,  262,  263,   -1,
+   -1,   -1,   -1,   -1,  269,  270,  271,  272,  273,  274,
+   -1,   -1,  277,  278,  279,  280,   -1,  259,  260,  284,
+  285,  286,  287,  288,  289,  267,   -1,  259,  260,   -1,
+   -1,  273,   -1,   -1,  276,  267,   -1,   -1,   -1,  281,
+  282,  273,   -1,   -1,  276,   -1,   -1,   -1,   -1,  281,
+  282,
 };
 #define YYFINAL 2
 #ifndef YYDEBUG
 #define YYDEBUG 0
 #endif
-#define YYMAXTOKEN 281
+#define YYMAXTOKEN 289
 #if YYDEBUG
 static const char *yyname[] = {
 
@@ -174,7 +193,8 @@ static const char *yyname[] = {
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"INT","WORD","NUMBER","SENTENCE",
 "NVAL","LOCALVAR","PSTRING","SUB","END","CHAIN","ROUTINE","NEXT","OP_ADD",
 "OP_SUB","OP_MUL","OP_DIV","OPENP","CLOSEP","ENTER","EXIT","SETAT","GETAT",
-"ARRAY","ASSIGN","PRINT",
+"SETATN","GETATN","ARRAYS","ARRAYN","ASSIGN","PRINT","OP_IF","OP_EQUAL",
+"OP_LOOP","OP_LESS","OP_GREATER",
 };
 static const char *yyrule[] = {
 "$accept : program",
@@ -193,6 +213,8 @@ static const char *yyrule[] = {
 "declare : varfunc",
 "vartype : NUMBER",
 "vartype : SENTENCE",
+"vartype : ARRAYS",
+"vartype : ARRAYN",
 "varval : INT",
 "varval : WORD",
 "varval : LOCALVAR",
@@ -203,11 +225,18 @@ static const char *yyrule[] = {
 "binop : OP_DIV",
 "datop : SETAT",
 "datop : GETAT",
-"datop : ARRAY",
+"datop : SETATN",
+"datop : GETATN",
 "datop : PRINT",
+"condop : OP_IF",
+"condop : OP_EQUAL",
+"condop : OP_LOOP",
+"condop : OP_LESS",
+"condop : OP_GREATER",
 "possiblearg : binop",
 "possiblearg : varval",
 "possiblearg : datop",
+"possiblearg : condop",
 "opstmt :",
 "opstmt : opstmt possiblearg",
 "$$4 :",
@@ -455,98 +484,130 @@ yyreduce:
     switch (yyn)
     {
 case 2:
-#line 35 "y.y"
+#line 36 "y.y"
 	{printf("ENTER\n");makefunction();}
 break;
 case 3:
-#line 35 "y.y"
+#line 36 "y.y"
 	{printf("EXIT\n");printfunction();if(!findfunction("main"))printf("main not found, terminating\n");else printf("returned: %i\n", eval(findfunction("main")));}
 break;
 case 4:
-#line 37 "y.y"
+#line 38 "y.y"
 	{printf("ROUTINE %s\n", yystack.l_mark[0].word);makesym(yystack.l_mark[0].word);makeblock(yystack.l_mark[0].word);}
 break;
 case 5:
-#line 37 "y.y"
+#line 38 "y.y"
 	{printsym();addfunction(returnfunction());closesym();closeblock();}
 break;
 case 9:
-#line 44 "y.y"
+#line 45 "y.y"
 	{printf("%s\n", yystack.l_mark[0].word);if(!getsym(yystack.l_mark[0].word))putsym(yystack.l_mark[0].word, 0, type_selector);else printf("symbol %s already registered\n", yystack.l_mark[0].word);}
 break;
 case 10:
-#line 47 "y.y"
+#line 48 "y.y"
 	{printf("OPENP\n");addline(TYPE_OP, (void*)'[');}
 break;
 case 11:
-#line 47 "y.y"
+#line 48 "y.y"
 	{printf("CLOSEP\n");addline(TYPE_OP, (void*)']');}
 break;
 case 14:
-#line 52 "y.y"
+#line 53 "y.y"
 	{printf("NUMBER\n");type_selector=TYPE_INT;}
 break;
 case 15:
-#line 53 "y.y"
+#line 54 "y.y"
 	{printf("SENTENCE\n");type_selector=TYPE_STR;}
 break;
 case 16:
 #line 55 "y.y"
-	{printf("INT %i\n", yystack.l_mark[0].num); addline(TYPE_INT, (void*)yystack.l_mark[0].num);}
+	{printf("ARRAYS\n");type_selector=TYPE_ARRC;}
 break;
 case 17:
 #line 56 "y.y"
-	{printf("WORD %s\n", yystack.l_mark[0].word); addline(TYPE_STR, (void*)yystack.l_mark[0].word);}
+	{printf("ARRAYN\n");type_selector=TYPE_ARRI;}
 break;
 case 18:
-#line 57 "y.y"
-	{printf("LOCAL %c\n", (char)yystack.l_mark[0].num); addline(TYPE_LOC, (void*)yystack.l_mark[0].num);}
+#line 58 "y.y"
+	{printf("INT %i\n", yystack.l_mark[0].num); addline(TYPE_INT, (void*)yystack.l_mark[0].num);}
 break;
 case 19:
-#line 58 "y.y"
-	{printf("PSTRING %s\n", yystack.l_mark[0].word); addline(TYPE_PSTRING, (void*)yystack.l_mark[0].word);}
+#line 59 "y.y"
+	{printf("WORD %s\n", yystack.l_mark[0].word); addline(TYPE_STR, (void*)yystack.l_mark[0].word);}
 break;
 case 20:
 #line 60 "y.y"
-	{printf("OP_ADD\n"); addline(TYPE_OP, (void*)'+');}
+	{printf("LOCAL %c\n", (char)yystack.l_mark[0].num); addline(TYPE_LOC, (void*)yystack.l_mark[0].num);}
 break;
 case 21:
 #line 61 "y.y"
-	{printf("OP_SUB\n"); addline(TYPE_OP, (void*)'-');}
+	{printf("PSTRING %s\n", yystack.l_mark[0].word); addline(TYPE_PSTRING, (void*)yystack.l_mark[0].word);}
 break;
 case 22:
-#line 62 "y.y"
-	{printf("OP_MUL\n"); addline(TYPE_OP, (void*)'*');}
+#line 63 "y.y"
+	{printf("OP_ADD\n"); addline(TYPE_OP, (void*)'+');}
 break;
 case 23:
-#line 63 "y.y"
-	{printf("OP_DIV\n"); addline(TYPE_OP, (void*)'/');}
+#line 64 "y.y"
+	{printf("OP_SUB\n"); addline(TYPE_OP, (void*)'-');}
 break;
 case 24:
 #line 65 "y.y"
-	{printf("SETAT\n"); addline(TYPE_OP, (void*)'=');}
+	{printf("OP_MUL\n"); addline(TYPE_OP, (void*)'*');}
 break;
 case 25:
 #line 66 "y.y"
-	{printf("GETAT\n"); addline(TYPE_OP, (void*)'$');}
+	{printf("OP_DIV\n"); addline(TYPE_OP, (void*)'/');}
 break;
 case 26:
-#line 67 "y.y"
-	{printf("ARRAY\n"); addline(TYPE_OP, (void*)'#');}
+#line 68 "y.y"
+	{printf("SETAT\n"); addline(TYPE_OP, (void*)'=');}
 break;
 case 27:
-#line 68 "y.y"
+#line 69 "y.y"
+	{printf("GETAT\n"); addline(TYPE_OP, (void*)'$');}
+break;
+case 28:
+#line 70 "y.y"
+	{printf("SETN\n");  addline(TYPE_OP, (void*)'s');}
+break;
+case 29:
+#line 71 "y.y"
+	{printf("GETN\n");  addline(TYPE_OP, (void*)'g');}
+break;
+case 30:
+#line 72 "y.y"
 	{printf("PRINT\n"); addline(TYPE_OP, (void*)'^');}
+break;
+case 31:
+#line 74 "y.y"
+	{printf("OP_IF\n"); addline(TYPE_OP, (void*)'?');}
+break;
+case 32:
+#line 75 "y.y"
+	{printf("OP_EQUAL\n"); addline(TYPE_OP, (void*)'e');}
 break;
 case 33:
 #line 76 "y.y"
-	{printf("OPENP\n");chlevel(TYPE_EMB);addline(TYPE_OP, (void*)'[');}
+	{printf("OP_LOOP\n"); addline(TYPE_OP, (void*)'l');}
 break;
 case 34:
-#line 76 "y.y"
-	{printf("CLOSEP\n");chlevel(TYPE_LV);addline(TYPE_OP, (void*)']');}
+#line 77 "y.y"
+	{printf("OP_LESS\n"); addline(TYPE_OP, (void*)'L');}
 break;
-#line 549 "y.tab.c"
+case 35:
+#line 78 "y.y"
+	{printf("OP_GREATER\n"); addline(TYPE_OP, (void*)'G');}
+break;
+case 42:
+#line 87 "y.y"
+	{printf("OPENP\n");addline(TYPE_OP, (void*)'[');}
+break;
+case 43:
+#line 87 "y.y"
+	{printf("CLOSEP\n");addline(TYPE_OP, (void*)']');}
+break;
+#line 610 "y.tab.c"
     }
     yystack.s_mark -= yym;
     yystate = *yystack.s_mark;

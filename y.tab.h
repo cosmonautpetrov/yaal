@@ -20,9 +20,17 @@
 #define EXIT 276
 #define SETAT 277
 #define GETAT 278
-#define ARRAY 279
-#define ASSIGN 280
-#define PRINT 281
+#define SETATN 279
+#define GETATN 280
+#define ARRAYS 281
+#define ARRAYN 282
+#define ASSIGN 283
+#define PRINT 284
+#define OP_IF 285
+#define OP_EQUAL 286
+#define OP_LOOP 287
+#define OP_LESS 288
+#define OP_GREATER 289
 #ifdef YYSTYPE
 #undef  YYSTYPE_IS_DECLARED
 #define YYSTYPE_IS_DECLARED 1
